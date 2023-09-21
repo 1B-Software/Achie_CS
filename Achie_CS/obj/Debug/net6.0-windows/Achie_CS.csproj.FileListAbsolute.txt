@@ -1,0 +1,15 @@
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.csproj.AssemblyReference.cache
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.AssemblyInfoInputs.cache
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.AssemblyInfo.cs
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.csproj.CoreCompileInputs.cache
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\bin\Debug\net6.0-windows\Achie_CS.exe
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\bin\Debug\net6.0-windows\Achie_CS.deps.json
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\bin\Debug\net6.0-windows\Achie_CS.runtimeconfig.json
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\bin\Debug\net6.0-windows\Achie_CS.dll
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\bin\Debug\net6.0-windows\Achie_CS.pdb
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.dll
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\refint\Achie_CS.dll
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.pdb
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\Achie_CS.genruntimeconfig.cache
+C:\Users\robat\Documentos\1B Software\Software\Achie_CS\Achie_CS\obj\Debug\net6.0-windows\ref\Achie_CS.dll
