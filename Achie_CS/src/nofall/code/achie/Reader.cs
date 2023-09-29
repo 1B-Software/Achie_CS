@@ -1,12 +1,4 @@
 ﻿using Achie_CS.src.nofall.code.achie.utils;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Achie_CS.src.nofall.code.achie {
     internal class Reader {
@@ -17,6 +9,7 @@ namespace Achie_CS.src.nofall.code.achie {
         public Reader(String path) {
             this.PATH = path;
             this.FILE = new StreamReader(path);
+            //Console.WriteLine(FILE.ReadToEnd());
             FindFile(path);
         }
 
@@ -28,10 +21,21 @@ namespace Achie_CS.src.nofall.code.achie {
             else Console.WriteLine("File by the name of " + "\"" + Path.GetFileName(path) + "\"" + " found");
         }
 
+        public String ReadToString() {
+            for (int i = 0; i < Read().Count(); i++) {
+                return Read()[i];
+            }
+            return null;
+        }
+
         public List<String> Read() {
             try {
-                String[] contents = File.ReadAllLines(this.PATH);
-                List<String> result = contents.ToList<String>();
+                String[] contents = null;
+                for (int i = 0; i < File.ReadLines(this.PATH).Count(); i++) {
+                    contents = File.ReadLines(this.PATH).ToArray();
+                    Console.WriteLine(contents[i]);
+                }
+                List<String> result = contents.ToList();
                 result = RemoveComments(result);
                 return result;
             } catch {
