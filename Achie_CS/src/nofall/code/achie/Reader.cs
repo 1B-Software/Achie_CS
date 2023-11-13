@@ -33,10 +33,10 @@ namespace Achie_CS.src.nofall.code.achie {
                 String[] contents = null;
                 for (int i = 0; i < File.ReadLines(this.PATH).Count(); i++) {
                     contents = File.ReadLines(this.PATH).ToArray();
-                    Console.WriteLine(contents[i]);
                 }
                 List<String> result = contents.ToList();
                 result = RemoveComments(result);
+                Console.WriteLine(result);
                 return result;
             } catch {
                 Console.Error.WriteLine("Unable to read file!");
