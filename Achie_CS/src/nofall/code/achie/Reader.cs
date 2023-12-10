@@ -1,10 +1,22 @@
 ﻿using Achie_CS.src.nofall.code.achie.utils;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Achie_CS.src.nofall.code.achie {
-    internal class Reader {
+    public class Reader {
 
         String PATH;
         StreamReader FILE;
+        public static List<String> contents;
+
+        public Key key;
 
         public Reader(String path) {
             this.PATH = path;
@@ -36,7 +48,10 @@ namespace Achie_CS.src.nofall.code.achie {
                 }
                 List<String> result = contents.ToList();
                 result = RemoveComments(result);
-                Console.WriteLine(result);
+                for (int i = 0; i < result.Count(); i++) {
+                    Console.WriteLine(i + ": " + result[i]);
+                }
+                Reader.contents = result;
                 return result;
             } catch {
                 Console.Error.WriteLine("Unable to read file!");
@@ -58,9 +73,9 @@ namespace Achie_CS.src.nofall.code.achie {
                 }
                 else isComment = false;
 
-                if (!isComment) result.Add(line + "\n");
+                if (!isComment) result.Add(line);
             }
-            return null;
+            return result;
         }
     }
 }
