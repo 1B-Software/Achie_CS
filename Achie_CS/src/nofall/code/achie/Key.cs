@@ -16,10 +16,43 @@ namespace Achie_CS.src.nofall.code.achie {
 
         public String getKey(String id) {
             // The dot specifies that we are going deeper into the hierarchy of the elements.
+            
+            String parent = id.Contains(".") ? id : "a"; 
+
             if (id.Contains(".")) {
                 String child = id.Substring(id.IndexOf("."), (id.Length-id.IndexOf(".")));
+                return child;
             }
             return null;
+        }
+
+        // Gets a child or a parent in a keychain.
+        private String getHeirarchyElement(String id, int index) {
+            String result = "";
+            // Child Count
+            int childC = childCount(id);
+
+            // If there are children.
+            if (childC != 0) {
+                for (int i = 0; i < id.Length; i++) {
+                    //if (id[i] == '.') 
+                }
+            } else {
+                result = id;
+            }
+
+            return result;
+        }
+
+
+        // Counts how many children a parent key has.
+        private int childCount(String id) {
+            int childCount = 0;
+            for (int i = 0; i < id.Length; i++)
+            {
+                if (id[i] == '.') childCount++;
+            }
+            return childCount;
         }
 
         // Gets all the elements (Keys), inside the specified key.

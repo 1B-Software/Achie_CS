@@ -8,9 +8,9 @@ namespace Achie_CS.src.nofall.code.achie
         public static void Main(string[] args)
         {
             Reader reader = new Reader("../../../data/sample.achie");
-            Console.WriteLine("READER: " + reader.Read());
+            reader.Read();
             Key robat = new Key();
-            Console.WriteLine(robat.getKey("Robatortas"));
+            Console.WriteLine("KEY: " + robat.getAllElementsInKey("ID"));
         }
 
     }

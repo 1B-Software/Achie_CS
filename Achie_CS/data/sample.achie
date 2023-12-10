@@ -22,6 +22,10 @@
 	<table>: 17;
 	<chair>: 18;
 	<bed>: 19;
+	<chain>: {
+		<thing> : 10;
+		<another_thing>: 20;
+	};
 };
 
 # Key example
