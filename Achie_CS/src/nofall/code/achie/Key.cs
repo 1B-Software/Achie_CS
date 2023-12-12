@@ -27,26 +27,36 @@ namespace Achie_CS.src.nofall.code.achie {
         }
 
         // Gets a child or a parent in a keychain.
-        private String getHeirarchyElement(String id, int index) {
+        public String getHeirarchyElement(String id, int index) {
             String result = "";
             // Child Count
             int childC = childCount(id);
 
+            int pointers = 0;
             // If there are children.
             if (childC != 0) {
                 for (int i = 0; i < id.Length; i++) {
-                    //if (id[i] == '.') 
+                    if (id[i] == '.') {
+                        pointers++;
+                    }
+                    if (pointers == index) {
+                        result = id.Substring((int)id[i]);
+                        return result;
+                    }
+                    else return "-2";
                 }
+            } else if (result.Equals(id)) {
+                return id;
             } else {
-                result = id;
+                Console.Error.WriteLine("Unable to find key by the name of " + "\"" + id + "\"");
+                return "-1";
             }
-
             return result;
         }
 
 
         // Counts how many children a parent key has.
-        private int childCount(String id) {
+        public int childCount(String id) {
             int childCount = 0;
             for (int i = 0; i < id.Length; i++)
             {
