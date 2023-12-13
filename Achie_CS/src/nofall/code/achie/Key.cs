@@ -26,27 +26,39 @@ namespace Achie_CS.src.nofall.code.achie {
             return null;
         }
 
-        // Gets a child or a parent in a keychain.
+        /// <summary>
+        /// Gets a child or a parent in a keychain.
+        /// <para></para>
+        /// ERROR CODES:
+        /// <br></br>
+        /// -1: Unable to find a key that matches the specified id.
+        /// <br></br>
+        /// -2: No children found.
+        /// <br></br>
+        /// -3: The index is bigger than the amount of children in the keychain OR its less than 0.
+        /// </summary>
         public String getHeirarchyElement(String id, int index) {
             String result = "";
             // Child Count
             int childC = childCount(id);
-
             int pointers = 0;
+
+            if (index > childC || index < 0) return "-3";
+
             // If there are children.
             if (childC != 0) {
                 for (int i = 0; i < id.Length; i++) {
-                    if (id[i] == '.') {
+                    if (id[i].ToString().Equals(".")) {
                         pointers++;
                     }
                     if (pointers == index) {
-                        result = id.Substring((int)id[i]);
+                        result = childC != index ? id.Substring(i+1, id.Substring(i+1).ToString().IndexOf(".")) : id.Substring(i+1);
+                        Console.WriteLine("RESULT: " + result);
                         return result;
-                    }
-                    else return "-2";
+                    } else if (i == id.Length) return "-2";
                 }
-            } else if (result.Equals(id)) {
-                return id;
+            } else if (childC == 0) {
+                result = id;
             } else {
                 Console.Error.WriteLine("Unable to find key by the name of " + "\"" + id + "\"");
                 return "-1";
@@ -55,8 +67,12 @@ namespace Achie_CS.src.nofall.code.achie {
         }
 
 
-        // Counts how many children a parent key has.
-        public int childCount(String id) {
+        /// <summary>
+        /// Counts how many children a parent key has.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private int childCount(String id) {
             int childCount = 0;
             for (int i = 0; i < id.Length; i++)
             {
