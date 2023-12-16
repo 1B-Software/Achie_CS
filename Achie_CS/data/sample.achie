@@ -21,7 +21,7 @@
 	<solidRock>: 16;
 	<table>: 17;
 	<chair>: 18;
-	<bed>: 19;
+	<bed>: "bed";
 	<chain>: {
 		<thing> : 10;
 		<another_thing>: 20;

@@ -66,14 +66,20 @@ namespace Achie_CS.src.nofall.code.achie {
 
             int idLocation = 0;
 
-            Console.WriteLine(idLocation);
-
             for (int i = 0; i < getTotalLines(); i++) {
-                idLocation = contents[i].IndexOf(id);
-                if (i == idLocation && contents[i - 1] == SyntaxCharacters.START_VARIABLE.ToString()) {
-                    Console.WriteLine("YES: " + contents[i - 1]);
+                if (contents[i].Contains(id)) {
+                    idLocation = i;
+                    String varStart = contents[idLocation].ToString().ElementAt(contents[idLocation].ToString().IndexOf(id)-1).ToString();
+                    if (varStart == SyntaxCharacters.START_VARIABLE.ToString()) {
+                        Console.Error.WriteLine("aa");
+                    }
                 }
+               // if (i == idLocation && contents[i - 1] == SyntaxCharacters.START_VARIABLE.ToString()) {
+               //     Console.WriteLine("YES: " + contents[i - 1]);
+               // }
             }
+
+            Console.WriteLine("LOC: " + idLocation);
 
             return result;
         }
