@@ -6,28 +6,93 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Achie_CS.src.nofall.code.achie {
-    public class Key {
+    public class Keys {
 
         List<String> contents = Reader.contents;
 
-        public Key() {
+        public Keys() {
 
         }
 
         public String getKey(String id) {
             // The dot specifies that we are going deeper into the hierarchy of the elements.
-            
-            String parent = id.Contains(".") ? id : "a"; 
+            //if (!contents.Contains(id)) return "-1";
 
-            if (id.Contains(".")) {
-                String child = id.Substring(id.IndexOf("."), (id.Length-id.IndexOf(".")));
-                return child;
+            defineKey(id);
+            Console.WriteLine("SOMETHING");
+
+            for (int i = 0; i < contents.Count; i++) {
+                String currentLine = contents[i];
+
+
             }
+
             return null;
         }
 
         /// <summary>
-        /// Gets a child or a parent in a keychain.
+        /// Tells if what is parameterized is a key.
+        /// <para></para>
+        /// Uses the rules of syntaxing.
+        /// <para></para>
+        /// RULES:
+        /// <br></br>
+        /// - Every key needs to have a starting and ending naming space.
+        /// To name a key, it must start with "&lt;" and end with "&gt;".
+        /// <br></br>
+        /// EXAMPLE: 
+        /// <br>A</br>
+        /// &lt;myName&gt;:
+        /// <br></br>
+        /// Note that is must have a colon as a sign of equalization.
+        /// <para></para>
+        /// - A key can equal to anything, even a list of keys. A list of keys is called a KeyChain
+        /// which we can define with a starting "{" and an ending "}".
+        /// <br></br>
+        /// EXAMPLE: 
+        /// <br></br>
+        /// &lt;myName>: {
+        /// <br></br>
+        /// &lt;myOtherName&gt;: "something";
+        /// <br></br>
+        /// &lt;anotherName&gt;: 10;
+        /// }
+        /// </summary>
+        /// <returns></returns>
+        public bool defineKey(String id) {
+            bool result = false;
+
+            Console.WriteLine("DEFINEKEY");
+
+            int idLocation = 0;
+
+            Console.WriteLine(idLocation);
+
+            for (int i = 0; i < getTotalLines(); i++) {
+                idLocation = contents[i].IndexOf(id);
+                if (i == idLocation && contents[i - 1] == SyntaxCharacters.START_VARIABLE.ToString()) {
+                    Console.WriteLine("YES: " + contents[i - 1]);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Gets the total number of lines in the achie file.
+        /// <br></br>
+        /// "\n" counts!
+        /// </summary>
+        public int getTotalLines() {
+            int result = 0;
+            for (int i = 0; i < contents.Count; i++) {
+                result = i;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Gets a child or a parent in a keychain. (INDEX 0 is the root parent)
         /// <para></para>
         /// ERROR CODES:
         /// <br></br>
@@ -37,7 +102,7 @@ namespace Achie_CS.src.nofall.code.achie {
         /// <br></br>
         /// -3: The index is bigger than the amount of children in the keychain OR its less than 0.
         /// </summary>
-        public String getHeirarchyElement(String id, int index) {
+        public String getKeyInId(String id, int index) {
             String result = "";
             // Child Count
             int childC = childCount(id);
@@ -58,6 +123,7 @@ namespace Achie_CS.src.nofall.code.achie {
                     } else if (i == id.Length) return "-2";
                 }
             } else if (childC == 0) {
+                // Meaning that the id has no children.
                 result = id;
             } else {
                 Console.Error.WriteLine("Unable to find key by the name of " + "\"" + id + "\"");
@@ -86,7 +152,7 @@ namespace Achie_CS.src.nofall.code.achie {
         public List<String> getAllElementsInKey(String key) {
             List<String> results = this.contents;
             if (key == "root") return results;
-            for (int i = 0; i < results.Count(); i++) {
+            for (int i = 0; i < getTotalLines(); i++) {
                 if (results[i].Trim() == SyntaxCharacters.START_VARIABLE + key + SyntaxCharacters.END_VARIABLE) {
                     String queried = results[i];
                 }

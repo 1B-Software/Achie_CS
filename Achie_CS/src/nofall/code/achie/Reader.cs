@@ -16,7 +16,7 @@ namespace Achie_CS.src.nofall.code.achie {
         StreamReader FILE;
         public static List<String> contents;
 
-        public Key key;
+        public Keys key;
 
         public Reader(String path) {
             this.PATH = path;
@@ -34,20 +34,21 @@ namespace Achie_CS.src.nofall.code.achie {
         }
 
         public String ReadToString() {
-            for (int i = 0; i < Read().Count(); i++) {
-                return Read()[i];
+            for (int i = 0; i < read().Count(); i++) {
+                return read()[i];
             }
             return null;
         }
 
-        public List<String> Read() {
+        public List<String> read() {
             try {
-                String[] contents = null;
+                String[] contents = new string[File.ReadLines(this.PATH).Count()];
                 for (int i = 0; i < File.ReadLines(this.PATH).Count(); i++) {
-                    contents = File.ReadLines(this.PATH).ToArray();
+                    // Converts the file into an array of strings and removes any whitespaces for easier parsing.
+                    contents[i] = File.ReadLines(this.PATH).ElementAt(i).Replace(" ", "");
                 }
                 List<String> result = contents.ToList();
-                result = RemoveComments(result);
+                result = removeComments(result);
                 for (int i = 0; i < result.Count(); i++) {
                     Console.WriteLine(i + ": " + result[i]);
                 }
@@ -59,7 +60,7 @@ namespace Achie_CS.src.nofall.code.achie {
             return null;
         }
 
-        public List<String> RemoveComments(List<String> fileContents) {
+        public List<String> removeComments(List<String> fileContents) {
             List<String> result = new List<String>();
 
             String line = null;
